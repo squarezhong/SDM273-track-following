@@ -5,10 +5,10 @@
 #include "DistanceSensor.h"
 
 // Motor control pins
-#define Motor_AIN1 6; 
-#define Motor_AIN2 3; 
-#define Motor_BIN1 11;
-#define Motor_BIN2 5; 
+#define Motor_AIN1 6
+#define Motor_AIN2 3
+#define Motor_BIN1 11
+#define Motor_BIN2 5
 
 // Encoder pins
 #define ENCODER_A 2
@@ -20,25 +20,25 @@
 const int trackingPins[4] = {9, 10, 12, 13};
 
 // Distance sensor addresses
-const uint8_t sensorAddress1 = 0x29; // Address for the first VL53L0X sensor
-const uint8_t sensorAddress2 = 0x30; // Address for the second VL53L0X sensor
+const uint8_t sensorAddress1 = 0x30; // Address for the first VL53L0X sensor
 
-MotorControl motorControl(Motor_AIN1, Motor_AIN2, Motor_BIN1, Motor_BIN2);
+MotorControl& motorControl = MotorControl::getInstance(Motor_AIN1, Motor_AIN2, Motor_BIN1, Motor_BIN2,
+                          ENCODER_A, ENCODER_B, ENCODER_C, ENCODER_D);
 LineTracking lineTracking(trackingPins);
 DistanceSensor distanceSensor1(sensorAddress1);
-DistanceSensor distanceSensor2(sensorAddress2);
 
-void setup() {
-    Serial.begin(115200);
+void setup()
+{
+    Serial.begin(9600);
     motorControl.init();
     lineTracking.init();
     distanceSensor1.init();
-    distanceSensor2.init();
     MsTimer2::set(10, control); // 10ms timer interrupt
     MsTimer2::start(); // enable the interrupt
 }
 
-void loop() {
+void loop()
+{
     // Line following logic
     int lineState = lineTracking.read();
     if (lineState == 15) { // All sensors detect the black line
@@ -52,6 +52,7 @@ void loop() {
     }
 }
 
-void control() {
+void control()
+{
     motorControl.update();
 }
