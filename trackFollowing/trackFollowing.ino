@@ -24,12 +24,13 @@ const uint8_t sensorAddress1 = 0x30; // Address for the first VL53L0X sensor
 
 MotorControl& motorControl = MotorControl::getInstance(Motor_AIN1, Motor_AIN2, Motor_BIN1, Motor_BIN2,
                           ENCODER_A, ENCODER_B, ENCODER_C, ENCODER_D);
+                          
 LineTracking lineTracking(trackingPins);
 DistanceSensor distanceSensor1(sensorAddress1);
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(115200);
     motorControl.init();
     lineTracking.init();
     distanceSensor1.init();
@@ -44,9 +45,7 @@ void loop()
     if (lineState == 15) { // All sensors detect the black line
         motorControl.stop();
         int distance1 = distanceSensor1.getFilteredDistance();
-        int distance2 = distanceSensor2.getFilteredDistance();
-        Serial.print("Distance 1: "); Serial.print(distance1); Serial.print(" mm, ");
-        Serial.print("Distance 2: "); Serial.println(distance2); Serial.print(" mm");
+        Serial.print("Distance 1: "); Serial.print(distance1); Serial.println(" mm, ");
     } else {
         motorControl.followLine(lineState);
     }

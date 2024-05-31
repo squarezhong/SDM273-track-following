@@ -27,11 +27,13 @@ private:
     static void readEncoderA();
     static void readEncoderC();
     int computePWM(int encoder, float target, float &bias, float &lastBias, float &pwm);
+    void setPWM(int pin1, int pin2, int pwm);   
 
     unsigned int Motor_AIN1, Motor_AIN2, Motor_BIN1, Motor_BIN2;
     unsigned int ENCODER_A, ENCODER_B, ENCODER_C, ENCODER_D;
     float Velocity_KP, Velocity_KI;
-    float Target1, Target2, Bias1, PWM1, Last_bias1;
+    float Target1, Target2;
+    float Bias1, PWM1, Last_bias1;
     float Bias2, PWM2, Last_bias2;
     int Velocity1, Count1, Velocity2, Count2;
 };
