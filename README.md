@@ -31,7 +31,11 @@ Open trackFollowing.ino and upload it to your Arduino board.
 - [ ] (Optional) After stopping at a horizontal line, calibrate the position of the robot
 
 ## Contributors
-To be continued...
+This project exists thanks to all the people who contribute. 
+
+<a href="https://github.com/squarezhong/SDM273-track-following/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=squarezhong/SDM273-track-following" />
+</a>
 
 ## License
 [GPL-3.0](LICENSE)
