@@ -3,9 +3,10 @@
 
 #include "Sensor.h"
 
-class LineTracking : public Sensor {
+class LineTracking : public Sensor
+{
 public:
-    LineTracking(const int* pins);
+    LineTracking(const int *pins);
     void init();
     int read();
 

@@ -6,7 +6,8 @@
 
 #define FILTER_SIZE 5
 
-class DistanceSensor : public Sensor {
+class DistanceSensor : public Sensor
+{
 public:
     DistanceSensor(uint8_t address);
     void init();

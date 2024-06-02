@@ -37,18 +37,24 @@ void MotorControl::stop()
 
 void MotorControl::followLine(int lineState)
 {
-    int error = 0;
-    if (lineState == 1)
-        error = -3;
-    if (lineState == 2)
-        error = -1;
-    if (lineState == 4)
-        error = 1;
-    if (lineState == 8)
-        error = 3;
+    // if (lineState == 15) {
+    //     Target1 = 0;
+    //     Target2 = 0;
+    //     return;
+    // }
 
-    Target1 = -7 - error;
-    Target2 = 7 - error;
+    float error = 0;
+    if (lineState == 1)
+        error = -2;
+    if (lineState == 2)
+        error = -1.5;
+    if (lineState == 4)
+        error = 1.5;
+    if (lineState == 8)
+        error = 2;
+
+    Target1 = -3.5 - error;
+    Target2 = 3.5 - error;
 }
 
 void MotorControl::update()
@@ -113,9 +119,7 @@ void MotorControl::setPWM(int pin1, int pin2, int pwm)
     }
     else if (pwm < 0)
     {
-        int pwmAbs = abs(pwm);
-        if (pwmAbs > 255)
-            pwmAbs = 255;
+        int pwmAbs = 255 + pwm;
         analogWrite(pin1, pwmAbs);
         digitalWrite(pin2, 1);
     }

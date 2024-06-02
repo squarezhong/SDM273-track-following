@@ -2,12 +2,36 @@
 
 ## Introduction
 
+Track following robot for SDM273 (Intelligent Sensors and Signal Processing) course at SUSTech.
+
+## Usage
+
+### Hardware
+To be continued...
+
+### Required Libraries
+Install the following libraries in Arduino IDE
+- VL53L0X (by Pololu)
+- MsTimer2 (by Javier)
+- PinChangeInterrupt (by NicoHood)
+- ssd1306 (by Alexey Dynda)
+
+### Code
+Open trackFollowing.ino and upload it to your Arduino board.
+
 ## Development Plan
 - [x] Drive two motors
-- [ ] Read the track following sensor
-- [ ] Implement a PID controller to follow the track
-- [ ] Stop at a horizontal line
-- [ ] Use two laser sensors to detect distance to an obstacle
+- [x] Read the track following sensor
+- [x] Implement a feedback control to follow the track
+- [x] Stop at a horizontal line
+- [x] Use a laser sensor to detect distance to an obstacle
+- [x] Show the distance to the obstacle on the OLED screen
 - [ ] Use filter and neural network to process the sensor data, and calculate the result
 
 - [ ] (Optional) After stopping at a horizontal line, calibrate the position of the robot
+
+## Contributors
+To be continued...
+
+## License
+[GPL-3.0](LICENSE)

@@ -27,7 +27,7 @@ private:
     static void readEncoderA();
     static void readEncoderC();
     int computePWM(int encoder, float target, float &bias, float &lastBias, float &pwm);
-    void setPWM(int pin1, int pin2, int pwm);   
+    void setPWM(int pin1, int pin2, int pwm);
 
     unsigned int Motor_AIN1, Motor_AIN2, Motor_BIN1, Motor_BIN2;
     unsigned int ENCODER_A, ENCODER_B, ENCODER_C, ENCODER_D;

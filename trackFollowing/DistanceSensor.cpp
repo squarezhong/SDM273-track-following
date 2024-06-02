@@ -2,24 +2,29 @@
 
 #include "DistanceSensor.h"
 
-DistanceSensor::DistanceSensor(uint8_t address) : address(address), index(0), total(0), average(0) {
-    for (int i = 0; i < FILTER_SIZE; i++) {
+DistanceSensor::DistanceSensor(uint8_t address) : address(address), index(0), total(0), average(0)
+{
+    for (int i = 0; i < FILTER_SIZE; i++)
+    {
         readings[i] = 0;
     }
 }
 
-void DistanceSensor::init() {
+void DistanceSensor::init()
+{
     Wire.begin();
     sensor.setAddress(address);
     sensor.init();
     sensor.startContinuous();
 }
 
-int DistanceSensor::read() {
+int DistanceSensor::read()
+{
     return sensor.readRangeContinuousMillimeters();
 }
 
-int DistanceSensor::getFilteredDistance() {
+int DistanceSensor::getFilteredDistance()
+{
     total -= readings[index];
     readings[index] = read();
     total += readings[index];
