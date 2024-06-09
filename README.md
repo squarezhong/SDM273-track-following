@@ -4,19 +4,29 @@
 
 Track following robot for SDM273 (Intelligent Sensors and Signal Processing) course at SUSTech.
 
-## Usage
-
 ### Hardware
-To be continued...
+#### Hardware Architecture
+<img src="img/hardware_arc.png" width=100%>
 
-### Required Libraries
+#### I2C Bus
+<img src="img/arduino_i2c.png" width=80%>
+
+### Software
 Install the following libraries in Arduino IDE
 - VL53L0X (by Pololu)
 - MsTimer2 (by Javier)
 - PinChangeInterrupt (by NicoHood)
-- ssd1306 (by Alexey Dynda)
+- Adafruit SSD1306 (by Adafruit)
 
-### Code
+#### Software Architecture
+- `Sensor` class: base class for all sensors
+  - `DistanceSensor` class: read the distance from the laser sensor
+  - `LineTracking` class: read the track following sensor
+- `OLED` class: control the OLED screen
+- `MotorControl` class: control the chassis of the robot, singleton pattern
+- `leastsquare`: python script to calculate the coefficients
+
+## Usage
 Open trackFollowing.ino and upload it to your Arduino board.
 
 ## Development Plan
@@ -26,7 +36,7 @@ Open trackFollowing.ino and upload it to your Arduino board.
 - [x] Stop at a horizontal line
 - [x] Use a laser sensor to detect distance to an obstacle
 - [x] Show the distance to the obstacle on the OLED screen
-- [ ] Use filter and neural network to process the sensor data, and calculate the result
+- [x] Use filter to process the sensor data, and calculate the result
 
 - [ ] (Optional) After stopping at a horizontal line, calibrate the position of the robot
 

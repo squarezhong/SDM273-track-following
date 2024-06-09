@@ -4,7 +4,7 @@
 #include "Sensor.h"
 #include <VL53L0X.h>
 
-#define FILTER_SIZE 5
+#define FILTER_SIZE 10
 
 class DistanceSensor : public Sensor
 {
