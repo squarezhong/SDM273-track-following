@@ -8,6 +8,8 @@ Track following robot for SDM273 (Intelligent Sensors and Signal Processing) cou
 #### Hardware Architecture
 <img src="img/hardware_arc.png" width=100%>
 
+Attention: Normally two VL53L0X have the same I2C address. If you want use both, you need to change the address of one of them. Please refer to this [documentation](https://learn.adafruit.com/adafruit-vl53l0x-micro-lidar-distance-sensor-breakout/arduino-code) for more information.
+
 #### I2C Bus
 <img src="img/arduino_i2c.png" width=80%>
 
